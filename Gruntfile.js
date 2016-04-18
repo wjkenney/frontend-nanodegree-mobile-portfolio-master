@@ -85,7 +85,7 @@ module.exports = function(grunt) {
     inlinecss: {
       main: {
       files: {
-        'out.html': 'index.html'
+        'index.html': 'index_source.html'
       }
     }
   },
