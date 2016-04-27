@@ -34,6 +34,20 @@ module.exports = function(grunt) {
       }]
     }
   },
+
+    htmlmin: {
+      my_target: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: [{
+          expand: true, 
+          src:['index.html'],
+          ext: '.min.html'
+        }]
+      }
+    },
     
     responsive_images: {
       dev: {
@@ -110,12 +124,13 @@ module.exports = function(grunt) {
   
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-inline-css');
   grunt.loadNpmTasks('grunt-responsive-images');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-mkdir');
   //these are the default tasks, you need to change these if you want to add or subtract tasks
-  grunt.registerTask('default', ['clean', 'uglify', 'cssmin', 'inlinecss', 'mkdir', 'copy', 'responsive_images']);
+  grunt.registerTask('default', ['clean', 'uglify', 'cssmin', 'inlinecss', 'htmlmin', 'mkdir', 'copy', 'responsive_images']);
 
 };
