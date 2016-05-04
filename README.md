@@ -20,7 +20,7 @@ Here is a list of optimizations the pizza website:
 # Contribution
 Please feel free to offer suggestiions how to make it better!  (I know it is not perfect).  
 
-# lisense
+# license
 
 This work is licensed under a Creative Commons Attribution 3.0 License.
 This means you can use the dump as long as you give credit to William Kenney (a link on your website to www.wjkenney.org is ok)

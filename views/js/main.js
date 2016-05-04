@@ -421,32 +421,35 @@ var pizzaElementGenerator = function(i) {
 
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) {
+    console.log(size);
     window.performance.mark("mark_start_resize"); // User Timing API function
 
     // Changes the value for the size of the pizza above the slider, document queryselector is outside the function
     function changeSliderLabel(size) {
-        pizzasize = document.querySelector("#pizzaSize").innerHTML
         switch (size) {
             case "1":
                 pizzasize = "Small";
                 newWidth = 25;
-                return;
+                break;
             case "2":
                 pizzasize = "Medium";
                 newWidth = 33.3;
-                return;
+                break;
             case "3":
                 pizzasize = "Large";
                 newWidth = 50;
-                return;
+                break;
             default:
                 console.log("bug in changeSliderLabel");
+                break;
         }
+        document.getElementById("pizzaSize").innerHTML=pizzasize;
     }
 
     changeSliderLabel(size);
     //creating random pizza
-    var randomPizzas = document.querySelectorAll(".randomPizzaContainer")
+    var randomPizzas = document.getElementsByClassName()("randomPizzaContainer")
+    //getelementsbyclassname is faster than queryselectall
     for (var i = 0, length = randomPizzas.length; i < length; i++) {
         randomPizzas[i].style.width = newWidth + "%";
     }
@@ -479,7 +482,8 @@ console.log("Time to generate pizzas on load: " + timeToGenerate[0].duration + "
 var frame = 0;
 //creating a global variable pizzalist that we can access
 var pizzalist = [];
-var newscrollvallue;
+var newscrollvalue;
+var pizzagenerator;
 
 
 
@@ -507,12 +511,23 @@ var MovingPizza = function() {
     this.elem.style.width = "73.333px";
 }
 
+function* generator(){
+   var i=1;
+   while (true){
+    yield 1200*i;
+    i++;
+    if (i==19){
+        i=1;
+    }
+  }  
+}
+
+var randomgenerator=generator();
 
 MovingPizza.prototype.updatePositions = function() {
-    //Here we are creating the update method using transform because it doesn't change geometry or affect layout
-    this.elem.style.transform = "translate3d(" + (Number(Math.sin(newscrollvalue / 1000)) * 100) + 'px,' + 0 + ',' + 0 + ')';
-
-}
+        this.elem.style.transform = "translate3d(" + (Number(Math.sin((newscrollvalue+randomgenerator.next().value)/ 1000) * 100))+ 'px,' + 0 + ',' + 0 + ')';
+    }
+    //Here we are creating the update method using transform because it doesn't change geometry or affect layout   
 
 //here we are instantiating new movingpizza objects and placing them in our global pizalist array to be accessed by addeventlisteners;
 function renderpizza() {
@@ -522,7 +537,8 @@ function renderpizza() {
             newpiz.elem.style.left = (18 * j) + '%';
             newpiz.elem.style.top = (15 + 35 * i) + '%';
             pizzalist.push(newpiz);
-            document.querySelector("#movingPizzas1").appendChild(newpiz.elem);
+            document.getElementById("movingPizzas1").appendChild(newpiz.elem);
+            //getElemementbyid is faster than queryselectorall...
         }
     }
 
@@ -549,4 +565,10 @@ window.addEventListener('scroll', function() {
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
     renderpizza();
+    newscrollvalue = document.body.scrollTop;
+    pizzalist.forEach(function(item) {
+        item.updatePositions();
+    })
+
+
 });
