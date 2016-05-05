@@ -11,9 +11,10 @@ Here is a list of some of the optimizations I have included:
   * Minifyd http css and javascript and inlining everything into one file. 
 
 Here is a list of optimizations the pizza website: 
-  * Rewrote unnecessary and repetitive function calls from loops: example: document.querySelector("#pizzaSize").innerHTML)
+  * Rewrote unnecessary and repetitive function calls from loops: example: document.querySelector("#pizzaSize").innerHTML) and changed querySelector to getElementbyID because it is faster.  
   * Reduced the usage of layout inducing methods like scrollTop and Offsetwidth. They are only called when necessary.
   * Used transform property for animation instead of width.  Supposedly it is better. 
+
 
  I also changed the structure of the rendering to rely on a movingpizza class to produce the icons.  Not sure if this did anything useful for the website.
 
