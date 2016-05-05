@@ -518,9 +518,9 @@ function* pizgenerator(){
     i++;
     if (i==19){
         i=1;
+        }
     }
-  }  
-}
+};
 
 var randomgenerator=pizgenerator();
 
@@ -541,12 +541,9 @@ function renderpizza() {
             //getElemementbyid is faster than queryselectorall...
         }
     }
-
+}
     // User Timing API to the rescue again. Seriously, it's worth learning.
     // Super easy to create custom metrics.
-
-}
-
 // runs updatePositions on scroll
 window.addEventListener('scroll', function() {
     frame++;
@@ -569,6 +566,4 @@ document.addEventListener('DOMContentLoaded', function() {
     pizzalist.forEach(function(item) {
         item.updatePositions();
     })
-
-
-});
+})
