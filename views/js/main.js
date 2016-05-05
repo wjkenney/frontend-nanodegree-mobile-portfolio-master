@@ -448,7 +448,7 @@ var resizePizzas = function(size) {
 
     changeSliderLabel(size);
     //creating random pizza
-    var randomPizzas = document.getElementsByClassName()("randomPizzaContainer")
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer")
     //getelementsbyclassname is faster than queryselectall
     for (var i = 0, length = randomPizzas.length; i < length; i++) {
         randomPizzas[i].style.width = newWidth + "%";
@@ -483,7 +483,7 @@ var frame = 0;
 //creating a global variable pizzalist that we can access
 var pizzalist = [];
 var newscrollvalue;
-var pizzagenerator;
+
 
 
 
@@ -511,7 +511,7 @@ var MovingPizza = function() {
     this.elem.style.width = "73.333px";
 }
 
-function* generator(){
+function* pizgenerator(){
    var i=1;
    while (true){
     yield 1200*i;
@@ -522,7 +522,7 @@ function* generator(){
   }  
 }
 
-var randomgenerator=generator();
+var randomgenerator=pizgenerator();
 
 MovingPizza.prototype.updatePositions = function() {
         this.elem.style.transform = "translate3d(" + (Number(Math.sin((newscrollvalue+randomgenerator.next().value)/ 1000) * 100))+ 'px,' + 0 + ',' + 0 + ')';
