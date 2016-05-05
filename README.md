@@ -5,15 +5,15 @@ Please have fun checking out these website optimisation.  I am hosting the Camer
 
 Here is a list of some of the optimizations I have included: 
 
-  * added async tags to all non-dom manipulating scripts
+  * Added async tags to all non-dom manipulating scripts
   * Separated non essential css into a separate stylesheet with a media print tag)
-  * reduced image file size
+  * Reduced image file size
   * Minifyd http css and javascript and inlining everything into one file. 
 
 Here is a list of optimizations the pizza website: 
-  * rewrote unnecessary and repetitive function calls from loops: example: document.querySelector("#pizzaSize").innerHTML)
+  * Rewrote unnecessary and repetitive function calls from loops: example: document.querySelector("#pizzaSize").innerHTML)
   * Reduced the usage of layout inducing methods like scrollTop and Offsetwidth. They are only called when necessary.
-  * used transform property for animation instead of width.  Supposedly it is better. 
+  * Used transform property for animation instead of width.  Supposedly it is better. 
 
  I also changed the structure of the rendering to rely on a movingpizza class to produce the icons.  Not sure if this did anything useful for the website.
 
