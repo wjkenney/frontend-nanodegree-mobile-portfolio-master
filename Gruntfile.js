@@ -56,17 +56,23 @@ module.exports = function(grunt) {
           sizes: [{
             
             name: 'small',
-            width: 70,
-            height: 70,
-            quality: 60
+            width: 320,
+            quality: 40
             
           },
           {
              name: 'medium',
-             width: 115,
-             height: 70,
-             quality: 80          
+             width: 640,
+             quality: 60          
               },
+
+            {
+
+             name: 'large',
+             width: 1024,
+             quality: 80 
+
+            }
             
               ]
         },
